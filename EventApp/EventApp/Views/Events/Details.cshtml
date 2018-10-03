@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Eventdetaljer</h1>
+
+<div class="row">
+    <div class="col-md-2">
+        <img src="http://placehold.it/300?text=Event" class="img-responsive" />
+        <hr />
+        <a href="#" class="btn btn-primary">Anmäl till event</a>
+    </div>
+    <div class="col-md-10">
+        <h2>Julmarknad</h2>
+        <p>Information om eventet</p>
+        <p>Plats: Linköping</p>
+        <p>Tid: 2018-11-25 14.00</p>
+    </div>
+</div>
+
+@Html.Partial("EventDetailsParticipantsPartial")
+
