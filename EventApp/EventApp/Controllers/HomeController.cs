@@ -27,7 +27,7 @@ namespace EventApp.Controllers
         }
 
         [Authorize]
-        public async Task<IActionResult> About()
+        public async Task<IActionResult> MinSida()
         {
 
             AppUser user = await userManager.GetUserAsync(User);

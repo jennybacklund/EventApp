@@ -85,7 +85,7 @@ namespace EventApp.Controllers
                 return View();
             }
 
-            return RedirectToAction("About", "Home");
+            return RedirectToAction("MinSida", "Home");
         }
 
         public async Task<IActionResult> Logout()
@@ -108,7 +108,7 @@ namespace EventApp.Controllers
 
             db.SaveChanges();
 
-            return RedirectToAction("About", "Home");
+            return RedirectToAction("MinSida", "Home");
         }
     }
 }
