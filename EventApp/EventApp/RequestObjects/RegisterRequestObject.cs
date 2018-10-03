@@ -8,8 +8,10 @@ namespace EventApp.RequestObjects
 {
     public class RegisterRequestObject
     {
+        public int Id { get; set; }
+
         [Required, MinLength(4), MaxLength(15), Display(Name = "Användarnamn")]
-        public string Username  { get; set; }
+        public string UserName  { get; set; }
 
         [Required, EmailAddress(ErrorMessage = "Det måste vara en giltig mailadress"), DataType(DataType.EmailAddress), Display(Name = "Email")]
         public string Email { get; set; }

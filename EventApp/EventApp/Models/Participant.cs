@@ -6,8 +6,10 @@ using Microsoft.Extensions.Logging;
 
 namespace EventApp.Models
 {
-    public class Enrol
+    public class Participant
     {
+        public int Id { get; set; }
+
         public virtual int EventId { get; set; }
         public virtual Event Event { get; set; }
 

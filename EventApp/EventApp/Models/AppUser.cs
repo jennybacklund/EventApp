@@ -8,5 +8,6 @@ namespace EventApp.Models
 {
     public class AppUser : IdentityUser
     {
+        //public virtual List<Participant> Participants { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using EventApp.Models;
+using EventApp.RequestObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;

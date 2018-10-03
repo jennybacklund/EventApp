@@ -2,20 +2,36 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EventApp.Data;
+using EventApp.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace EventApp.Controllers
 {
     public class EventsController : Controller
     {
-        public IActionResult Index()
+        private EventAppContext db;
+
+        public EventsController(EventAppContext db)
         {
-            return View();
+            this.db = db;
         }
 
-        public IActionResult Details()
+        public IActionResult Index()
         {
-            return View();
+            List<Event> model = db.Events.ToList();
+
+            return View(model);
+        }
+
+        public IActionResult Details(int id)
+        {
+            Event model = db.Events
+                .Where(e => e.Id == id)
+                .FirstOrDefault();
+
+            return View(model);
         }
     }
 }

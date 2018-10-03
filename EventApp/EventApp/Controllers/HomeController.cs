@@ -5,21 +5,34 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using EventApp.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EventApp.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private UserManager<AppUser> userManager;
+
+        public HomeController(UserManager<AppUser> userManager)
         {
-            return View();
+            this.userManager = userManager;
         }
 
-        public IActionResult About()
+        public async Task <IActionResult> Index()
         {
-            ViewData["Message"] = "Your application description page.";
+            AppUser user = await userManager.GetUserAsync(User);
 
-            return View();
+            return View(user);
+        }
+
+        [Authorize]
+        public async Task<IActionResult> About()
+        {
+
+            AppUser user = await userManager.GetUserAsync(User);
+
+            return View(user);
         }
 
         public IActionResult Contact()

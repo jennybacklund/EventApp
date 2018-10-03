@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EventApp.Data;
+using EventApp.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -26,7 +28,7 @@ namespace EventApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<EventAppContext>(options =>
-                options.UseSqlite("Data Source=EventAppData.db"));
+                options.UseSqlite("Data Source=EventApp.db"));
 
             services.Configure<CookiePolicyOptions>(options =>
                   {
@@ -37,6 +39,10 @@ namespace EventApp
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddIdentity<AppUser, IdentityRole>()
+                .AddEntityFrameworkStores<EventAppContext>()
+                .AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,6 +58,8 @@ namespace EventApp
             }
 
             app.UseStaticFiles();
+
+            app.UseAuthentication();
             app.UseCookiePolicy();
 
             app.UseMvc(routes =>

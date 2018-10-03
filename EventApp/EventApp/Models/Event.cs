@@ -14,6 +14,6 @@ namespace EventApp.Models
         public DateTime Time { get; set; }
         public string Description { get; set; }
 
-        public virtual List<AppUser> Users { get; set; }
+        public virtual List<Participant> Participants { get; set; }
     }
 }

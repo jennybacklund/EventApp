@@ -1,4 +1,5 @@
 ﻿using EventApp.Models;
+using EventApp.RequestObjects;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,9 +10,9 @@ using System.Threading.Tasks;
 namespace EventApp.Data
 {
     public class EventAppContext : IdentityDbContext<AppUser>
-  {
+    {
         public DbSet<Event> Events { get; set; }
-        public DbSet<Enrol> Enrols { get; set; }
+        public DbSet<Participant> Participants { get; set; }
 
         public EventAppContext(DbContextOptions<EventAppContext> options) : base(options)
         {
