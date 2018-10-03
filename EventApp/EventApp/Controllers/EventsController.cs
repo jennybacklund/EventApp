@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EventApp.Controllers
 {
-    public class EventController : Controller
+    public class EventsController : Controller
     {
         public IActionResult Index()
         {
