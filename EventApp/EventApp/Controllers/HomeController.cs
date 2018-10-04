@@ -32,6 +32,8 @@ namespace EventApp.Controllers
 
             AppUser user = await userManager.GetUserAsync(User);
 
+
+
             return View(user);
         }
 

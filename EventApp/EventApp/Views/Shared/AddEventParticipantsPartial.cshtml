@@ -1,0 +1,6 @@
+﻿@model AddEventParticipantsPartialViewModel
+
+<form asp-controller="Participants" asp-action="Participate" method="post">
+    <input type="hidden" asp-for="Participant.EventId" value="@Model.Event.Id" />
+    <input type="submit" value="Anmäl till Event" class="btn btn-success" />
+</form>

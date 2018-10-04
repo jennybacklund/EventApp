@@ -94,21 +94,6 @@ namespace EventApp.Controllers
 
             return RedirectToAction("Index", "Account");
 
-        }
-
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult Create(Event myEvent)
-        {
-            db.Events.Add(myEvent);
-
-            db.SaveChanges();
-
-            return RedirectToAction("MinSida", "Home");
-        }
+        }  
     }
 }

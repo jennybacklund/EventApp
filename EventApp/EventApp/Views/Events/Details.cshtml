@@ -1,4 +1,5 @@
 ﻿@model Event
+
 @{
     ViewData["Title"] = "Details";
 }
@@ -11,8 +12,8 @@
         <hr />
         @if (User.Identity.IsAuthenticated)
         {
-            <a href="#" class="btn btn-primary">Anmäl till event</a>
-        }
+            @Html.Partial("AddEventParticipantsPartial", new AddEventParticipantsPartialViewModel(Model))
+        }   
     </div>
     <div class="col-md-10">
         <h2>@Model.Title</h2>
@@ -22,5 +23,6 @@
     </div>
 </div>
 
-@Html.Partial("EventDetailsParticipantsPartial")
+
+@Html.Partial("EventParticipantsPartial", Model.Participants)
 

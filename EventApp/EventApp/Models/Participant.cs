@@ -13,7 +13,7 @@ namespace EventApp.Models
         public virtual int EventId { get; set; }
         public virtual Event Event { get; set; }
 
-        public virtual int UserId { get; set; }
+        public virtual string UserId { get; set; }
         public virtual AppUser AppUser { get; set; }
     }
 }

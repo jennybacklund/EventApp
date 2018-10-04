@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EventApp.Data;
 using EventApp.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -29,9 +30,25 @@ namespace EventApp.Controllers
         {
             Event model = db.Events
                 .Where(e => e.Id == id)
+                .Include(e => e.Participants)
                 .FirstOrDefault();
 
             return View(model);
+        }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Event myEvent)
+        {
+            db.Events.Add(myEvent);
+
+            db.SaveChanges();
+
+            return RedirectToAction("MinSida", "Home");
         }
     }
 }
