@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using EventApp.Data;
 using EventApp.Models;
 using EventApp.RequestObjects;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -30,6 +31,17 @@ namespace EventApp.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        [Authorize]
+        public async Task<IActionResult> MinSida()
+        {
+
+            AppUser user = await userManager.GetUserAsync(User);
+
+
+
+            return View(user);
         }
 
         public IActionResult Register()
@@ -85,7 +97,7 @@ namespace EventApp.Controllers
                 return View();
             }
 
-            return RedirectToAction("MinSida", "Home");
+            return RedirectToAction("MinSida","Account");
         }
 
         public async Task<IActionResult> Logout()

@@ -1,4 +1,8 @@
-﻿using System;
+﻿//Veronika Borup
+//Jenny Bäcklund
+//Paula Zhao
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -54,7 +58,7 @@ namespace EventApp
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Events/Error");
             }
 
             app.UseStaticFiles();
@@ -66,7 +70,7 @@ namespace EventApp
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Events}/{action=Index}/{id?}");
             });
         }
     }

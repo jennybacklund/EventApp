@@ -13,10 +13,12 @@ namespace EventApp.Controllers
     public class EventsController : Controller
     {
         private EventAppContext db;
+        private UserManager<AppUser> userManager;
 
-        public EventsController(EventAppContext db)
+        public EventsController(EventAppContext db, UserManager<AppUser> userManager)
         {
             this.db = db;
+            this.userManager = userManager;
         }
 
         public IActionResult Index()
@@ -46,9 +48,16 @@ namespace EventApp.Controllers
         {
             db.Events.Add(myEvent);
 
+            myEvent.Participants = new List<Participant>();
+            Participant participant = new Participant();
+
+            participant.UserId = userManager.GetUserName(User);
+            myEvent.Participants.Add(participant);
+
             db.SaveChanges();
 
-            return RedirectToAction("MinSida", "Home");
+            return RedirectToAction("Details", "Events", new { id = participant.EventId });
         }
+
     }
 }
