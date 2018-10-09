@@ -37,12 +37,7 @@ namespace EventApp.Controllers
             return View(user);
         }
 
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
+     
 
         public IActionResult Privacy()
         {
